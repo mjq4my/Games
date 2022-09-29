@@ -5,9 +5,14 @@ import gamebox
 import random
 
 camera = gamebox.Camera(1200,700)
+
+# shooter = gamebox.from_image(135,350,"http://images.clipartpanda.com/shooter-clipart-shooter-clipart-1.jpg")
+# backgr = gamebox.from_image(600,350,"http://orig12.deviantart.net/eced/f/2014/312/f/c/abandoned_factory_by_stgspi-d85o7fq.png")
+# start_pic = gamebox.from_image(600,350,"http://img08.deviantart.net/e319/i/2013/334/8/8/the_pale_forest_by_nelleke-d6w6lnu.png")
 shooter = gamebox.from_image(135,350,"http://images.clipartpanda.com/shooter-clipart-shooter-clipart-1.jpg")
 backgr = gamebox.from_image(600,350,"http://orig12.deviantart.net/eced/f/2014/312/f/c/abandoned_factory_by_stgspi-d85o7fq.png")
 start_pic = gamebox.from_image(600,350,"http://img08.deviantart.net/e319/i/2013/334/8/8/the_pale_forest_by_nelleke-d6w6lnu.png")
+
 intro = gamebox.from_text(camera.x, 100, "Welcome to Zombies", "Impact", 60, "white")
 instructions = gamebox.from_text(camera.x, 600, "Instructions: Press up and down to move, space to shoot. Defeat all three waves of zombies.", "Impact", 30, "white")
 names = gamebox.from_text(camera.x, 170, "Michael Quinn (mjq4my) & Daniel Forsman (dhf5qe)", "Impact", 30, "white")
@@ -15,10 +20,12 @@ starting = gamebox.from_text(camera.x, 650, "Press s to start", "Impact", 40, "w
 wave1 = gamebox.from_text(camera.x, 50, "WAVE 1", "Impact", 30, "red")
 wave2 = gamebox.from_text(camera.x, 50, "WAVE 2", "Impact", 30, "red")
 finalwave = gamebox.from_text(camera.x, 50, "FINAL WAVE", "Impact", 30, "red")
+
 start_pic.size = 1200,700
 lose_pic = gamebox.from_image(600,350,"http://1.bp.blogspot.com/--ZtvnMlMDcs/Usr205F1wiI/AAAAAAAAPYU/B2JGrSPBOgg/w1200-h630-p-k-no-nu/walkers-photo-walking-dead.png")
 lose_pic.size = 1200,700
-win_pic = gamebox.from_image(600,350,"http://primalsurvivor.com/wp-content/uploads/2014/10/apocalypsesurvivor1.png")
+# win_pic = gamebox.from_image(600,350,"http://primalsurvivor.com/wp-content/uploads/2014/10/apocalypsesurvivor1.png")
+win_pic = gamebox.from_image(600,350,"http://1.bp.blogspot.com/--ZtvnMlMDcs/Usr205F1wiI/AAAAAAAAPYU/B2JGrSPBOgg/w1200-h630-p-k-no-nu/walkers-photo-walking-dead.png")
 win_pic.size = 1200,700
 game_over = gamebox.from_text(camera.x, 100, "The zombies ate you, sorry.", "Impact", 70, "red")
 game_winner = gamebox.from_text(camera.x, 500, "You won! You slayed all the zombies!", "Impact", 70, "white")
@@ -28,9 +35,9 @@ first_zombies =[]
 second_zombies = []
 last_zombies = []
 bullets = []
-gunshot = gamebox.load_sound("gun_fire.wav")
-reload = gamebox.load_sound("gun_cocking.wav")
-zombiedie = gamebox.load_sound("zombie_die.wav")
+# gunshot = gamebox.load_sound("gun_fire.wav")
+# reload = gamebox.load_sound("gun_cocking.wav")
+# zombiedie = gamebox.load_sound("zombie_die.wav")
 ammo = 100
 zombie_speed = 4
 shooter_speed=10
@@ -42,28 +49,28 @@ lose_game=False
 for z in range(15):
     x = random.randrange(1250, 1850)
     y = random.randrange(50,650)
-    first_zombies.append(gamebox.from_image(x,y,"zombie.png"))
+    first_zombies.append(gamebox.from_image(x,y,"pics/zombie.png"))
 for z in range(20):
     x = random.randrange(1300, 1900)
     y = random.randrange(50,650)
-    second_zombies.append(gamebox.from_image(x,y,"zombie.png"))
+    second_zombies.append(gamebox.from_image(x,y,"pics/zombie.png"))
 for z in range(25):
     x = random.randrange(1300, 1900)
     y = random.randrange(50,650)
-    last_zombies.append(gamebox.from_image(x,y,"zombie.png"))
+    last_zombies.append(gamebox.from_image(x,y,"pics/zombie.png"))
 
 def losegame(keys):
     camera.clear("white")
     camera.draw(lose_pic)
     camera.draw(game_over)
-    reload.stop()
-    gunshot.stop()
+    # reload.stop()
+    # gunshot.stop()
     camera.display()
 def win_game(keys):
     camera.draw(win_pic)
     camera.draw(game_winner)
-    reload.stop()
-    gunshot.stop()
+    # reload.stop()
+    # gunshot.stop()
     camera.display()
 def tick(keys):
     global frame
@@ -103,19 +110,19 @@ def tick(keys):
             for bullet in bullets:
                 if bullet.touches(zombie) and zombie.x<=1230:
                     first_zombies.remove(zombie)
-                    zombiedie.play()
+                    # zombiedie.play()
                     bullets.remove(bullet)
         for zombie in second_zombies:
             for bullet in bullets:
                 if bullet.touches(zombie) and zombie.x<=1230:
                     second_zombies.remove(zombie)
-                    zombiedie.play()
+                    # zombiedie.play()
                     bullets.remove(bullet)
         for zombie in last_zombies:
             for bullet in bullets:
                 if bullet.touches(zombie) and zombie.x<=1230:
                     last_zombies.remove(zombie)
-                    zombiedie.play()
+                    # zombiedie.play()
                     bullets.remove(bullet)
         for zombie in first_zombies:
             zombie.size = 80, 130
@@ -145,19 +152,19 @@ def tick(keys):
             shooter.y += shooter_speed
         if pygame.K_SPACE in keys:
             bullet = gamebox.from_color(150, shooter.y - 55, "orange", 10, 2)
-            gunshot.play()
+            # gunshot.play()
             bullets.append(bullet)
             ammo-=1
             if ammo%10==0 and ammo>0:
                 for a in range(1):             #make reload sound after every 10 shots
-                    reload.play()
+                    # reload.play()
                     keys.clear()
                     break
             keys.clear()
         if ammo<=0:                             #no more ammo
             bullets. clear()
-            reload.stop()
-            gunshot.stop()
+            # reload.stop()
+            # gunshot.stop()
             ammo =0
         for bullet in bullets:                  #shoot the bullets
             bullet.x+=80
