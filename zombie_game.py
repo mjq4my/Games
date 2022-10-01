@@ -41,7 +41,7 @@ gunshot = gamebox.load_sound("sounds/gunshot01.wav")
 # reload = gamebox.load_sound("sounds/gun_cocking.wav")
 zombiedie = gamebox.load_sound("sounds/zombie_attack.wav")
 
-ammo = 100
+ammo = 200
 zombie_speed = 4
 shooter_speed=10
 frame = 0
