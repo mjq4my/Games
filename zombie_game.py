@@ -10,9 +10,9 @@ camera = gamebox.Camera(1200,700)
 # shooter = gamebox.from_image(135,350,"http://images.clipartpanda.com/shooter-clipart-shooter-clipart-1.jpg")
 # backgr = gamebox.from_image(600,350,"http://orig12.deviantart.net/eced/f/2014/312/f/c/abandoned_factory_by_stgspi-d85o7fq.png")
 # start_pic = gamebox.from_image(600,350,"http://img08.deviantart.net/e319/i/2013/334/8/8/the_pale_forest_by_nelleke-d6w6lnu.png")
-shooter = gamebox.from_image(135,350,"http://images.clipartpanda.com/shooter-clipart-shooter-clipart-1.jpg")
-backgr = gamebox.from_image(600,350,"http://orig12.deviantart.net/eced/f/2014/312/f/c/abandoned_factory_by_stgspi-d85o7fq.png")
-start_pic = gamebox.from_image(600,350,"http://img08.deviantart.net/e319/i/2013/334/8/8/the_pale_forest_by_nelleke-d6w6lnu.png")
+shooter = gamebox.from_image(135,350,"pics/shooter.jpg")
+backgr = gamebox.from_image(600,350,"pics/abandoned_factory.png")
+start_pic = gamebox.from_image(600,350,"pics/forest.png")
 
 intro = gamebox.from_text(camera.x, 100, "Welcome to Zombies", "Impact", 60, "white")
 instructions = gamebox.from_text(camera.x, 600, "Instructions: Press up and down to move, space to shoot. Defeat all three waves of zombies.", "Impact", 30, "white")
@@ -23,10 +23,10 @@ wave2 = gamebox.from_text(camera.x, 50, "WAVE 2", "Impact", 30, "red")
 finalwave = gamebox.from_text(camera.x, 50, "FINAL WAVE", "Impact", 30, "red")
 
 start_pic.size = 1200,700
-lose_pic = gamebox.from_image(600,350,"http://1.bp.blogspot.com/--ZtvnMlMDcs/Usr205F1wiI/AAAAAAAAPYU/B2JGrSPBOgg/w1200-h630-p-k-no-nu/walkers-photo-walking-dead.png")
+lose_pic = gamebox.from_image(600,350,"pics/walkers.png")
 lose_pic.size = 1200,700
 # win_pic = gamebox.from_image(600,350,"http://primalsurvivor.com/wp-content/uploads/2014/10/apocalypsesurvivor1.png")
-win_pic = gamebox.from_image(600,350,"http://1.bp.blogspot.com/--ZtvnMlMDcs/Usr205F1wiI/AAAAAAAAPYU/B2JGrSPBOgg/w1200-h630-p-k-no-nu/walkers-photo-walking-dead.png")
+win_pic = gamebox.from_image(600,350,"pics/walkers.png")
 win_pic.size = 1200,700
 game_over = gamebox.from_text(camera.x, 100, "The zombies ate you, sorry.", "Impact", 70, "red")
 game_winner = gamebox.from_text(camera.x, 500, "You won! You slayed all the zombies!", "Impact", 70, "white")
